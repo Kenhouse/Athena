@@ -7,8 +7,10 @@ Read images practice
 ref:
 https://www.tensorflow.org/programmers_guide/datasets
 https://www.hksilicon.com/articles/1471783
-'''
 
+[TODO] Add histogram equalization.
+'''
+__author__ = 'channai'
 
 import tensorflow as tf
 import os
