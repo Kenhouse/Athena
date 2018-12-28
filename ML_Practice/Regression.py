@@ -45,7 +45,7 @@ def main(unused_argv):
     #split data to train and test
     train_dataset = dataset.sample(frac=0.8,random_state=0)
     test_dataset = dataset.drop(train_dataset.index)
-    print('train data: ' + str(len(train_dataset)) + ', test data: ' + str(len(test_dataset)))
+    #print('train data: ' + str(len(train_dataset)) + ', test data: ' + str(len(test_dataset)))
 
     train_stats = train_dataset.describe()
     train_stats.pop("MPG")
@@ -64,11 +64,11 @@ def main(unused_argv):
 
     #construct model
     model = build_model([len(train_dataset.keys())])
-    print(model.summary())
+    #print(model.summary())
 
     example_batch_data = train_dataset[:10]
     example_batch_result = model.predict(example_batch_data)
-    print(example_batch_result)
+    #print(example_batch_result)
 
 
     '''Training process'''
@@ -87,9 +87,12 @@ def main(unused_argv):
     '''print the training history'''
     hist = pd.DataFrame(history.history)
     hist['epoch'] = history.epoch
-    print (hist.tail())
+    #print (hist.tail())
 
     loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=0)
+    test_predictions = model.predict(normed_test_data).flatten()
+    predict = pd.DataFrame({'MPG predict':test_predictions, 'MPG labels':test_labels})
+    print(predict.tail())
     print("Testing set Mean Abs Error: {:5.2f} MPG".format(mae))
 
 
