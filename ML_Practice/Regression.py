@@ -70,7 +70,6 @@ def main(unused_argv):
     example_batch_result = model.predict(example_batch_data)
     #print(example_batch_result)
 
-
     '''Training process'''
     class PrintDot(keras.callbacks.Callback):
       def on_epoch_end(self, epoch, logs):
